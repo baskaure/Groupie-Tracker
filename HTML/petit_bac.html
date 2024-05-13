@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlist Spotify</title>
+</head>
+<body>
+    <div>Petit Bac</div>
+    <div>{{.RandomLetter}}</div>
+    
+<div>chrono</div>
+<div id="countdown" style="font-size: 24px; font-weight: bold;"></div>
+<form id="FormGamePetitBac" action="/GamePetitBacCheck" method="post"></form>
+<div>Manche : {{.CountHandle}} </div>
+    <div>
+        
+        <form id="myForm" method="POST" action="/GamePetitBacCheck">
+            <p>Artiste</p>
+            <input type="text" name="GamePBArtiste" autocomplete="off"/>
+            <p>Album</p>
+            <input type="text" name="GamePBAlbum" autocomplete="off"/>
+            <p>Groupe de Musique</p>
+            <input type="text" name="GamePBMusicGroup" autocomplete="off"/>
+            <p>Instrument de Musique</p>
+            <input type="text" name="GamePBMusicalInstrument" autocomplete="off"/>
+            <p>Featuring</p>
+            <input type="text" name="GamePBFeaturing" autocomplete="off"/>
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+    <script>
+        function submitForm() {
+            var form = document.getElementById("myForm")
+            var artisteInput = form.elements["GamePBArtiste"].value
+            var albumInput = form.elements["GamePBAlbum"].value
+            
+                form.submit()
+
+        }
+        var urlcourante = document.location.href; 
+        var urlcourante = urlcourante.replace(/\/$/, "");
+        var queue_url = urlcourante.substring(urlcourante.lastIndexOf("/") + 1);
+        console.log(queue_url)
+        const countdownSongValue = parseInt(document.cookie.split('; ').find(row => row.startsWith('countdownSong=')).split('=')[1])
+        let countdown = countdownSongValue
+        console.log(countdown)
+        startCountdown(countdown)
+        function startCountdown(countdownValue) {
+            const endTimestamp = new Date().getTime() + countdownValue * 1000
+            console.log(countdownValue)
+            let countdown = setInterval(function() {
+                const now = new Date().getTime()
+                const distance = endTimestamp - now
+                const minutesRemaining = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Convertir les millisecondes restantes en minutes
+                const secondsRemaining = Math.floor((distance % (1000 * 60)) / 1000); // Récupérer les secondes restantes
+                document.getElementById('countdown').innerHTML = `${minutesRemaining}m ${secondsRemaining}s`;
+                if (distance < 0) {
+                    clearInterval(countdown)
+                    document.getElementById('countdown').innerHTML = "Fin du temps de réponse !!"
+                        const form = document.querySelector('#FormGamePetitBac');
+                        form.submit();
+                    
+                }
+            }, 1000)
+        }
+    </script>
+</body>
+</html>

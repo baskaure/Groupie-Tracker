@@ -1,0 +1,51 @@
+{{define "Timer"}} 
+
+<div>chrono</div>
+<div id="countdown" style="font-size: 24px; font-weight: bold;"></div>
+<form id="FormGameBlindTest" action="/GameBlindTestTimer" method="post"></form>
+<form id="FormGameDeafTest" action="/GameDeafTestTimer" method="post"></form>
+
+
+
+<script>
+    var urlcourante = document.location.href; 
+
+    var urlcourante = urlcourante.replace(/\/$/, "");
+    var queue_url = urlcourante.substring(urlcourante.lastIndexOf("/") + 1);
+    console.log(queue_url)
+
+    const countdownSongValue = parseInt(document.cookie.split('; ').find(row => row.startsWith('countdownSong=')).split('=')[1])
+    const countdownAnswerValue = parseInt(document.cookie.split('; ').find(row => row.startsWith('countdownAnswer=')).split('=')[1])
+    let countdown = countdownSongValue + countdownAnswerValue;
+    console.log(countdown)
+    startCountdown(countdown)
+
+    function startCountdown(countdownValue) {
+        const endTimestamp = new Date().getTime() + countdownValue * 1000
+        console.log(countdownValue)
+
+        let countdown = setInterval(function() {
+            const now = new Date().getTime()
+            const distance = endTimestamp - now
+
+            const minutesRemaining = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+            const secondsRemaining = Math.floor((distance % (1000 * 60)) / 1000)
+
+            document.getElementById('countdown').innerHTML = `${minutesRemaining}m ${secondsRemaining}s`;
+
+            if (distance < 0) {
+                clearInterval(countdown)
+                document.getElementById('countdown').innerHTML = "Fin du temps de réponse !!"
+                if (queue_url === "GameBlindTest" || queue_url === "GameBlindTestTimer") {
+                    const form = document.querySelector('#FormGameBlindTest');
+                    form.submit();
+                } else if (queue_url === "GameDeafTest" || queue_url === "GameDeafTestTimer") {
+                    const form = document.querySelector('#FormGameDeafTest');
+                    form.submit();
+                }
+            }
+        }, 1000)
+    }
+</script>
+
+{{end}}

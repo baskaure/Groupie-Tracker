@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlist Spotify</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>Petit Bac</div>
+    <div>{{.RandomLetter}}</div>
+    <div>Manche : {{.CountHandle}} </div>
+    <div id="formContainer">
+        <div id="d1">
+        <form id="petitBacArtiste" method="POST" action="/GamePetitBac">
+            <p>Artiste : {{.Artiste}}</p>
+            <input type="radio" id="UniqueArtiste" name="Artiste" value="Unique">
+            <label for="UniqueArtiste">Unique</label>
+            <input type="radio" id="IdentiqueArtiste" name="Artiste" value="Identique">
+            <label for="IdentiqueArtiste">Identique</label>
+            <input type="radio" id="FauxArtiste" name="Artiste" value="Faux">
+            <label for="FauxArtiste">Faux</label>
+            <!-- <button id="ButtonSwitch">Valider</button> -->
+        </form>
+        <button id="ButtonConfirmD1">Valider</button>
+        </div>
+        <div id="d2">
+        <form id="petitBacAlbum" method="POST" action="/GamePetitBac">
+            <p>Album : {{.Album}}</p>
+            <input type="radio" id="UniqueAlbum" name="Album" value="Unique">
+            <label for="UniqueAlbum">Unique</label>
+            <input type="radio" id="IdentiqueAlbum" name="Album" value="Identique">
+            <label for="IdentiqueAlbum">Identique</label>
+            <input type="radio" id="FauxAlbum" name="Album" value="Faux">
+            <label for="FauxAlbum">Faux</label>
+            <!-- <button id="ButtonSwitch">Valider</button> -->
+        </form>
+        <button id="ButtonConfirmD2">Valider</button>
+        </div>
+        <div id="d3">
+        <form id="petitBacMusicGroup" method="POST" action="/GamePetitBac">
+            <p>Groupe de Musique : {{.MusicGroup}}</p>
+            <input type="radio" id="UniqueMusicGroup" name="MusicGroup" value="Unique">
+            <label for="UniqueMusicGroup">Unique</label>
+            <input type="radio" id="IdentiqueMusicGroup" name="MusicGroup" value="Identique">
+            <label for="IdentiqueMusicGroup">Identique</label>
+            <input type="radio" id="FauxMusicGroup" name="MusicGroup" value="Faux">
+            <label for="FauxMusicGroup">Faux</label>
+        </form>
+        <button id="ButtonConfirmD3">Valider</button>
+        </div>
+        <div id="d4">
+        <form id="petitBacMusicalInstrument" method="POST" action="/GamePetitBac">
+            <p>Instrument de Musique : {{.MusicalInstrument}}</p>
+            <input type="radio" id="UniqueMusicalInstrument" name="MusicalInstrument" value="Unique">
+            <label for="UniqueMusicalInstrument">Unique</label>
+            <input type="radio" id="IdentiqueMusicalInstrument" name="MusicalInstrument" value="Identique">
+            <label for="IdentiqueMusicalInstrument">Identique</label>
+            <input type="radio" id="FauxMusicalInstrument" name="MusicalInstrument" value="Faux">
+            <label for="FauxMusicalInstrument">Faux</label>
+            <!-- <button id="ButtonSwitch">Valider</button> -->
+        </form>
+        <button id="ButtonConfirmD4">Valider</button>
+            </div>
+            <div id="d5">
+        <form id="petitBacFeaturing" method="POST" action="/GamePetitBac">
+            <p>Featuring : {{.Featuring}}</p>
+            <input type="radio" id="UniqueFeaturing" name="Featuring" value="Unique">
+            <label for="UniqueFeaturing">Unique</label>
+            <input type="radio" id="IdentiqueFeaturing" name="Featuring" value="Identique">
+            <label for="IdentiqueFeaturing">Identique</label>
+            <input type="radio" id="FauxFeaturing" name="Featuring" value="Faux">
+            <label for="FauxFeaturing">Faux</label>
+            <button id="ButtonConfirm" type="submit" class="hidden">Valider</button>
+            </div>
+        </form>
+    </div>
+    <script>
+function checkForm(id) {
+    const radios = document.querySelectorAll(`#${id} input[type="radio"]:checked`)
+    if (radios.length === 0) {
+        alert(`Veuillez sélectionner une option`)
+        return false 
+    }
+    return true
+}
+document.getElementById("ButtonConfirmD1").addEventListener("click", function(event) {
+    if (!checkForm("petitBacArtiste")) {
+        event.preventDefault();
+    }else{
+        NoneD1()
+    }
+});
+document.getElementById("ButtonConfirmD2").addEventListener("click", function(event) {
+    if (!checkForm("petitBacAlbum")) {
+        event.preventDefault();
+    }else{
+        NoneD2()
+    }
+});
+document.getElementById("ButtonConfirmD3").addEventListener("click", function(event) {
+    if (!checkForm("petitBacMusicGroup")) {
+        event.preventDefault();
+    }else{
+        NoneD3()
+    }
+});
+document.getElementById("ButtonConfirmD4").addEventListener("click", function(event) {
+    if (!checkForm("petitBacMusicalInstrument")) {
+        event.preventDefault();
+    }else{
+        NoneD4()
+    }
+});
+document.getElementById("ButtonConfirm").addEventListener("click", function(event) {
+    if (!checkForm("petitBacFeaturing")) {
+        event.preventDefault();
+    }
+});
+let Count = 0
+let ButtonSwitch = document.getElementById("ButtonSwitch")
+let ButtonConfirmD1 = document.getElementById("ButtonConfirmD1")
+let ButtonConfirmD2 = document.getElementById("ButtonConfirmD2")
+let ButtonConfirmD3 = document.getElementById("ButtonConfirmD3")
+let ButtonConfirmD4 = document.getElementById("ButtonConfirmD4")
+let d1 = document.getElementById("d1")
+let d2 = document.getElementById("d2")
+let d3 = document.getElementById("d3")
+let d4 = document.getElementById("d4")
+let d5 = document.getElementById("d5")
+document.addEventListener("DOMContentLoaded", function() {
+    // Votre fonction ici
+    d2.style.display = "none"
+    d3.style.display = "none"
+    d4.style.display = "none"
+    d5.style.display = "none"
+});
+function NoneD1() {
+        d1.style.display = "none"
+        d2.style.display = "block"
+    }
+function NoneD2() {
+        d2.style.display = "none"
+        d3.style.display = "block"
+    } 
+function NoneD3() {
+        d3.style.display = "none"
+        d4.style.display = "block"
+    }
+function NoneD4() {
+        d4.style.display = "none"
+        d5.style.display = "block"
+    }
+</script>
+</body>
+</html>

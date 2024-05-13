@@ -1,0 +1,132 @@
+body {
+    background-color: #62327F;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('img/background.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.04;
+    z-index: -1;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    margin-bottom: 50px;
+}
+
+.logo-container img {
+    width: 500px;
+    height: auto;
+}
+
+.logo-container:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.choose-game {
+    text-decoration: none;
+    padding: 15px;
+    color: #FFFFFF;
+    background-color: #F3A7F0;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border: 7px solid #D28ED0;
+    box-shadow: 3px 8px 12px #444444;
+    -webkit-box-shadow: 3px 8px 12px #444444;
+    -moz-box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 35px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.choose-game:hover {
+    background-color: #D292D0;
+    border: 7px solid #B97EB7;
+}
+
+.choose-game:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.login {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+    text-decoration: none;
+    padding: 7px 30px;
+    color: #FFFFFF;
+    background-color: #F3A7F0;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border: 7px solid #D28ED0;
+    box-shadow: 3px 8px 12px #444444;
+    -webkit-box-shadow: 3px 8px 12px #444444;
+    -moz-box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    font-family: 'Lilita One', sans-serif; 
+}
+
+.login:hover {
+    background-color: #D292D0;
+    border: 7px solid #B97EB7;
+}
+
+.sound {
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    text-decoration: none;
+    padding: 20px;
+    color: #FFFFFF;
+    background-color: #F3A7F0;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border: 7px solid #D28ED0;
+    box-shadow: 3px 8px 12px #444444;
+    -webkit-box-shadow: 3px 8px 12px #444444;
+    -moz-box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    font-family: 'Lilita One', sans-serif; 
+    background-image: url('img/sound.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.sound:hover {
+    background-color: #D292D0;
+    border: 7px solid #B97EB7;
+}

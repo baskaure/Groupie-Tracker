@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/static/game.css">
+</head>
+<body>
+    <header>
+        <form method="POST" action="/Home">
+            <button class="retour">RETOUR</button>
+        </form>
+    </header>
+    <a class="pseudo" href="/Logout">{{.Pseudo}}</a>
+    <p class="titre">Chat en Temps Réel</p>
+    <ul id="messages"></ul>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Écrire un message...">
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <script>
+        const pseudo = "{{.Pseudo}}"; 
+        const form = document.getElementById('messageForm');
+        const messageInput = document.getElementById('messageInput');
+        const messagesList = document.getElementById('messages');
+
+        const ws = new WebSocket('ws://' + window.location.host + '/ws');
+
+        ws.onmessage = function(e) {
+            const messageData = JSON.parse(e.data);
+            const li = document.createElement('li');
+            li.textContent = messageData.pseudo + ": " + messageData.message; 
+            messagesList.appendChild(li);
+        };
+
+        form.onsubmit = function(event) {
+            event.preventDefault();
+            const message = messageInput.value;
+            const data = JSON.stringify({ pseudo: pseudo, message: message }); 
+            ws.send(data);
+            messageInput.value = '';
+        };
+    </script>
+</body>
+</html>

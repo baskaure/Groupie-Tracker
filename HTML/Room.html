@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+    <div>Code de la session : {{.Code}} </div>
+    <div>{{.GameID}}</div>
+    <div id="users"></div>
+    <button onclick="startGame()">Démarrer le Jeu</button>
+
+    <form id="Play" action="/{{.GameID}}" method="POST">
+        <input type="hidden" name="game" value="{{.GameID}}">
+    </form>
+    
+    <script>
+        var socket = new WebSocket('ws://' + window.location.host + '/waitroom_ws');
+
+        socket.onopen = function() {
+            socket.send(JSON.stringify({type: "join", user: "username", roomCode: "{{.Code}}"}));
+        };
+
+        socket.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            if (data.action === "join") {
+                var userDiv = document.createElement("div");
+                userDiv.textContent = data.user + " a rejoint.";
+                document.getElementById("users").appendChild(userDiv);
+            } else if (data.action === "leave") {
+                var users = document.getElementById("users").children;
+                for (var i = 0; i < users.length; i++) {
+                    if (users[i].textContent.startsWith(data.user)) {
+                        users[i].remove();
+                        break;
+                    }
+                }
+            } else if (data.action === "start") {
+                window.location.href = "/game";
+            }
+        };
+
+        window.onbeforeunload = function() {
+            socket.send(JSON.stringify({type: "leave", user: "username", roomCode: "{{.Code}}"}));
+        };
+
+        function startGame() {
+            socket.send(JSON.stringify({type: "start", user: "username", roomCode: "{{.Code}}"}));
+            const form = document.querySelector('#Play');
+                    form.submit();
+
+        }
+    </script>
+</body>
+</html>

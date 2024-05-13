@@ -1,0 +1,395 @@
+body {
+    background-color: #62327F;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('img/background.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.04;
+    z-index: -1;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    position: absolute; 
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-container img {
+    width: 200px;
+    height: auto;
+}
+
+.sound {
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    text-decoration: none;
+    padding: 20px;
+    color: #FFFFFF;
+    background-color: #F3A7F0;
+    border-radius: 50px;
+    border: 7px solid #D28ED0;
+    box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    font-family: 'Lilita One', sans-serif; 
+    background-image: url('img/sound.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.sound:hover {
+    background-color: #D292D0;
+    border: 7px solid #B97EB7;
+}
+
+.pseudo-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.pseudo {
+    position: absolute; 
+    top: 20px; 
+    right: 20px;
+    text-decoration: none;
+    padding: 5px;
+    color: #FFFFFF;
+    background-color: rgba(243, 167, 240, 0.6); 
+    border-radius: 15px;
+    border: 7px solid rgba(210, 142, 208, 0.7);;
+    box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    align-items: center;
+    font-family: 'Lilita One', sans-serif; 
+    display: flex;
+}
+
+.pseudo:hover {
+    background-color: rgba(243, 167, 240, 0.4); 
+    border: 7px solid rgba(185, 126, 183, 0.4); 
+}
+
+.pseudo::before {
+    content: "";
+    display: inline-block;
+    width: 30px; 
+    height: 30px;
+    margin-right: 10px; 
+    background-image: url('img/profil.png');
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.left-container {
+    background-color: #582D73;
+    padding: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    font-family: 'Lilita One', sans-serif;
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    margin-top: 120px;
+    margin-left: 80px;
+}
+
+.right-container {
+    margin-top: 120px;
+    margin-right: 80px;
+    flex: 2; 
+    background-color: #582D73;
+    padding: 20px;
+    margin-left: 10px;
+    border-radius: 30px;
+    font-family: 'Lilita One', sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px; 
+}
+
+.bellow-container {
+    font-family: 'Lilita One', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    width: calc(100% - 20px); 
+    margin-left: 10px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+.play {
+    margin-bottom: 20px;
+    text-decoration: none;
+    padding: 10px 100px;
+    color: #FFFFFF;
+    background-color: #F3A7F0;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border: 7px solid #D28ED0;
+    box-shadow: 3px 8px 12px #444444;
+    -webkit-box-shadow: 3px 8px 12px #444444;
+    -moz-box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.play:hover {
+    background-color: #D292D0;
+    border: 7px solid #B97EB7;
+}
+
+.grid-item {
+    background-color: #F3A7F0;
+    border: 7px solid #D28ED0;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
+    font-family: 'Lilita One', sans-serif;
+}
+a {
+    text-decoration: none; 
+}
+
+.titre {
+    color: #FFFF;
+    font-weight: 1000;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.pseudo-container-room {
+    position: fixed;
+    top: 20px;
+    left: 20px; 
+    display: flex;
+    align-items: center;
+}
+
+.pseudo-room {
+    text-decoration: none;
+    padding: 5px;
+    color: #FFFFFF;
+    background-color: rgba(243, 167, 240, 0.6);
+    border-radius: 15px;
+    border: 7px solid rgba(210, 142, 208, 0.7);
+    box-shadow: 3px 8px 12px #444444;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    align-items: center;
+    font-family: 'Lilita One', sans-serif;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.pseudo-room::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-image: url('img/profil.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.add-container {
+    background-size: 40px; 
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #F3A7F0;
+    border: 7px solid #D28ED0;
+    padding: 20px; 
+    border-radius: 30px;
+    font-family: 'Lilita One', sans-serif;
+    text-align: center;
+    margin-bottom: 325px;
+}
+
+.add {
+    color: #FFFF; 
+    font-weight: 1000;
+    font-size: 15px;
+    margin-top: 30px; 
+    margin-bottom: 0.001px;
+}
+
+.join {
+    color: #FFFF; 
+    font-weight: 1000;
+    font-size: 15px;
+    margin-top: 30px; 
+    margin-bottom: 0.001px;
+}
+
+.title {
+    color: #FFFF; 
+    font-weight: 1000;
+    font-size: 15px;
+    margin-top: 10px; 
+    margin-bottom: 0.001px;
+}
+
+.join:hover {
+    color: #582D73;
+    cursor: pointer;
+}
+
+.code {
+    cursor: pointer;
+    background-size: 40px; 
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #D28ED0;
+    padding: 5px; 
+    border-radius: 5px;
+    color: #FFFF; 
+    font-weight: 1000;
+    font-size: 25px;
+    margin-top: -30px;
+    margin-bottom: 0.001px;
+}
+
+.code:hover {
+    cursor: pointer;
+    color: #582D73;
+}
+
+.add-container-join {
+    background-color: #F3A7F0;
+    border: 7px solid #D28ED0;
+    padding: 20px;
+    border-radius: 30px;
+    font-family: 'Lilita One', sans-serif;
+    text-align: center;
+    flex: 1; 
+    margin-bottom: 325px;
+}
+
+.add-container-options {
+    background-color: #F3A7F0;
+    border: 7px solid #D28ED0;
+    padding: 20px;
+    border-radius: 30px;
+    font-family: 'Lilita One', sans-serif;
+    text-align: center;
+    flex: 1; 
+    margin-bottom: 325px;
+    margin-left: 10px; 
+}
+
+.add-container-options-below {
+    background-color: #F3A7F0;
+    border: 7px solid #D28ED0;
+    padding: 20px;
+    border-radius: 30px;
+    font-family: 'Lilita One', sans-serif;
+    text-align: center;
+    flex: 1; 
+    margin-bottom: 325px;
+    margin-left: 10px; 
+}
+
+.moins,
+.plus {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #D28ED0;
+    border-radius: 5px;
+    color: #FFFF; 
+    font-weight: 1000;
+    font-size: 15px;
+    width: 40px; 
+    text-align: center;
+    margin-top: 20px;
+}
+
+.moins:hover,
+.plus:hover {
+    cursor: pointer;
+    background-color: #985396;
+}
+
+.add-join {
+    color: #FFFF;
+    font-weight: 1000;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.add-container {
+    margin-right: 10px;
+}
+
+.add-container:hover {
+    background-color: #b369b0;
+    border: 7px solid #985396;
+}
+
+.add-container-join:hover {
+    background-color: #b369b0;
+    border: 7px solid #985396;
+}
+
+input[type="text"] {
+    font-family: 'Lilita One', sans-serif;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #62327F; 
+    border-radius: 5px; 
+    margin-bottom: -30px;
+    width: 100%; 
+    box-sizing: border-box;
+    background-color: white; 
+    color: black; 
+}
+
+.enter-code::placeholder {
+    color: black; 
+    opacity: 0.7; 
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>Playlist Spotify</title>
+</head>
+<body>
+    <h1>Music</h1>
+    <div> Manche :{{.CountHandle}} </div>
+
+    {{template "Timer"}}
+
+    <div>
+        <form method="POST" action="/GameDeafTest">
+            <input type="text" name="GameGuessInput" autocomplete="off"/>
+        </form>
+    </div>
+
+    <div>
+        <div>{{.Lyrics}}</div>
+    </div>    
+</body>
+</html>

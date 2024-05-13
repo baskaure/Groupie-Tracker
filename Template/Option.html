@@ -1,0 +1,127 @@
+{{define "Option"}} 
+
+
+<script>
+    const start = document.getElementById('start');
+    const gameForm = document.getElementById('gameForm');
+
+    const SongForm = document.getElementById('SongForm');
+    const AnswerForm = document.getElementById('AnswerForm');
+    const HandleForm = document.getElementById('HandleForm');
+    const PlayerForm = document.getElementById('PlayerForm');
+
+    
+    const timerSongInput = document.getElementById('Song');
+    const decreaseSongButton = document.getElementById('decreaseSong');
+    const increaseSongButton = document.getElementById('increaseSong');
+    
+    const timerAnswerInput = document.getElementById('Answer');
+    const decreaseAnswerButton = document.getElementById('decreaseAnswer');
+    const increaseAnswerButton = document.getElementById('increaseAnswer');
+    
+    const HandleInput = document.getElementById('Handle');
+    const increaseHandleButton = document.getElementById('increaseHandle');
+    const decreaseHandleButton = document.getElementById('decreaseHandle');
+
+    
+    const PlayerInput = document.getElementById('max_players');
+    const increasePlayerButton = document.getElementById('increasePlayer');
+    const decreasePlayerButton = document.getElementById('decreasePlayer');
+    
+    function submitForm(form) {
+        form.submit();
+    }
+    
+    start.addEventListener('click', (event) => {
+        event.preventDefault()
+
+    console.log(timerSongInput.value)
+    document.cookie = `countdownSong=${timerSongInput.value}`
+    document.cookie = `countdownAnswer=${timerAnswerInput.value}`
+
+        const songValue = timerSongInput.value;
+        const answerValue = timerAnswerInput.value;
+        const handleValue = HandleInput.value;
+        const playerValue = PlayerInput.value;
+
+
+        SongForm.querySelector('input').value = songValue
+        AnswerForm.querySelector('input').value = answerValue
+        HandleForm.querySelector('input').value = handleValue
+        PlayerForm.querySelector('input').value = playerValue
+
+
+        submitForm(SongForm)
+        submitForm(AnswerForm)
+        submitForm(HandleForm)
+        submitForm(PlayerForm)
+
+    });
+    
+    increaseSongButton.addEventListener('click', () => {
+      let time = parseInt(timerSongInput.value)
+      if (time < 30) {
+        time += 10
+        timerSongInput.value = time
+      }
+    })
+    
+    decreaseSongButton.addEventListener('click', () => {
+      let time = parseInt(timerSongInput.value)
+      if (time > 10) {
+        time -= 10
+        timerSongInput.value = time
+      }
+    })
+    
+    decreaseAnswerButton.addEventListener('click', () => {
+      let time = parseInt(timerAnswerInput.value)
+      if (time > 10) {
+        time -= 10
+        timerAnswerInput.value = time
+      }
+    })
+    
+    increaseAnswerButton.addEventListener('click', () => {
+      let time = parseInt(timerAnswerInput.value)
+      if (time < 60) {
+        time += 10
+        timerAnswerInput.value = time
+      }
+    })
+    
+    decreaseHandleButton.addEventListener('click', () => {
+      let time = parseInt(HandleInput.value)
+      if (time > 5) {
+        time -= 5
+        HandleInput.value = time
+      }
+    })
+    
+    increaseHandleButton.addEventListener('click', () => {
+      let time = parseInt(HandleInput.value)
+      if (time < 15) {
+        time += 5
+        HandleInput.value = time
+      }
+    })
+
+    
+    decreasePlayerButton.addEventListener('click', () => {
+      let time = parseInt(PlayerInput.value)
+      if (time > 2) {
+        time -= 1
+        PlayerInput.value = time
+      }
+    })
+    
+    increasePlayerButton.addEventListener('click', () => {
+      let time = parseInt(PlayerInput.value)
+      if (time < 10) {
+        time += 1
+        PlayerInput.value = time
+      }
+    })
+</script>
+
+{{end}}

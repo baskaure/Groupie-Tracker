@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+
+    <!--  -->
+    <h1>Bienvenue, {{.Pseudo}}</h1>
+    <h2>Choisissez un jeu :</h2>
+<!--  -->
+
+    <span>Blind Test : </span>
+    <form  method="POST" action="/">
+        <button type="submit">Jouer</button>
+    </form>
+    <form  method="POST" action="/OptionGameBlindTest">
+        <button type="submit">Créer une salle</button>
+    </form>
+
+    <span>Deaf Test :</span>
+    <form  method="POST" action="/">
+        <button type="submit">Jouer</button>
+    </form>
+    <form  method="POST" action="/OptionGameDeafTest">
+        <button type="submit">Créer une salle</button>
+    </form>
+
+    <span>Petit Bac : </span>
+    <form  method="POST" action="/">
+        <button type="submit">Jouer</button>
+    </form>
+    <form  method="POST" action="/OptionGamePetitBac">
+        <button type="submit">Créer une salle</button>
+    </form>
+
+<!--  -->
+    <h2>Communication en Temps Réel</h2>
+    <ul>
+        <li><a href="/chat">Rejoindre le Chat WebSocket</a></li>
+    </ul>
+    <a href="/Logout">Déconnexion</a>
+<!--  -->
+
+</body>
+</html>

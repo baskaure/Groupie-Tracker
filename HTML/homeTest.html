@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="./static/game.css">
+    <link rel="icon" type="logo/png" href="./static/img/logo.png">
+</head>
+<header>
+    <a class="pseudo" href="/Logout">{{.Pseudo}}</a>
+    <button class="sound"></button>
+</header>
+<body>
+
+    <div class="background-image"></div>
+    <div class="content-container">
+        <div class="logo-container">
+            <a href="/">
+                <img src="./static/img/logo.png" alt="Logo">
+            </a>
+        </div>        
+    </div>
+        <div class="container-wrapper">
+            <a class="container">
+                <img src="./static/img/blindtest.png" alt="blindtest">
+                <p class="titre">BLIND TEST</p>
+                <p>Un jeu en ligne où vous devinez <br>des chansons en écoutant des<br> extraits.</p>
+                <form action="/JoinRoom" method="POST">
+                    <input type="hidden" name="game_id" value="2">
+                    <button type="submit" class="play">REJOINDRE</button>
+                </form>
+                <form action="/Game/2" method="POST">
+                    <input type="hidden" name="game_id" value="2">
+                    <button type="submit" class="play">CREE ROOM</button>
+                </form>
+            </a>
+            <a class="container">
+                <img src="./static/img/deaftest.png" alt="deaftest">
+                <p class="titre">DEAF TEST</p>
+                <p>Un jeu en ligne où vous devinez <br>des chansons sans entendre la<br> musique.</p>
+                <form action="/JoinRoom" method="POST">
+                    <input type="hidden" name="game_id" value="1">
+                    <button type="submit" class="play">REJOINDRE</button>
+                </form>
+                <form action="/Game/1" method="POST">
+                    <input type="hidden" name="game_id" value="1">
+                    <button type="submit" class="play">CREE ROOM</button>
+                </form>
+            </a>
+            <a class="container">
+                <img src="./static/img/petitbac.png" alt="petitbac">
+                <p class="titre">PETIT BAC</p>
+                <p>Un jeu en ligne où vous trouvez <br>des mots selon une lettre dans<br> diverses catégories.</p>
+                <form action="/JoinRoom" method="POST">
+                    <input type="hidden" name="game_id" value="3">
+                    <button type="submit" class="play">REJOINDRE</button>
+                </form>
+                <form action="/Game/3" method="POST">
+                    <input type="hidden" name="game_id" value="3">
+                    <button type="submit" class="play">CREE ROOM</button>
+                </form>
+            </a>
+        </div>
+    <div class="bellow-container">
+    <a href="/chat" class="join">Rejoindre le Chat</a>
+    <a href="/Game" class="join">Présentation des jeux</a>
+    <br>
+    <P>© 2024 - Groupie Tracker - Created by Aurélien Erwan Brandon</P>
+    </div>
+</body>
+</html>
+
+</body>
+</html>

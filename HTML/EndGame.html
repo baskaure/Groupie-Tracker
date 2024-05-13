@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <title>END GAME</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>END GAME</h1>
+
+    <table>
+        <caption><h1>Tableau des point</h1></caption>
+            <!-- <thead> -->
+                <tr>
+                    <th>Nom</th>
+                    <th>point</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Table}}
+                <tr>
+                    <td>{{.Name}}</td>
+                    <td>{{.point}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="./static/signup.css">
+    <link rel="icon" type="logo/png" href="./static/img/logo.png">
+</head>
+<header>
+    <form method="POST" action="/">
+        <button class="retour">RETOUR</button>
+    </form>
+</header>
+<body>
+    <div class="background-image"></div>
+    <div class="logo-container">
+        <a href="/">
+            <img src="./static/img/logo.png" alt="Logo">
+        </a>
+    </div>  
+<div class="content-container">
+    <div class="container">
+        <p class="titre">SE CONNECTER</p>
+        <form action="#" method="post">
+            <div class="input-group">
+                <input type="text" id="login" name="login" placeholder="PSEUDO OU EMAIL" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="MOT DE PASSE" required>
+            </div>
+            <p class="error-message">{{ .ErrorMessage }}</p>
+            <button type="submit" class="inscription">SE CONNECTER</button>
+        </form>
+    </div>
+    <p><a href="/Signup" class="connection">INSCRIPTION</a></p>
+</div>
+</body>
+</html>
+

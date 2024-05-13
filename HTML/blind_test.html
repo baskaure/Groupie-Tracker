@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+
+<head>
+    <title>Playlist Spotify</title>
+</head>
+<body>
+    <div>Manche : {{.CountHandle}} </div>
+    <h1>Music</h1>
+
+    {{template "Timer"}}
+
+    <div>
+        <form method="POST" action="/GameBlindTest">
+            <input type="text" name="GameBlindInput" autocomplete="off"/>
+        </form>
+    </div>
+
+    <div>
+        <div>
+            <audio id="musicPlayer" controls autoplay style="display: none;">
+
+                <source src="{{.PreviewURL}}">
+            </audio>
+        </div>
+
+    </div>
+    <button id="replayButton" class="play">Replay</button>
+
+    <script>
+        var audio = document.getElementById("musicPlayer")
+        var replayButton = document.getElementById("replayButton")
+
+        function replayAudio() {
+            audio.currentTime = 0
+            audio.play()
+        }
+
+        replayButton.addEventListener("click", replayAudio)
+        
+
+        audio.addEventListener("timeupdate", function() {
+            if (audio.currentTime >= countdownSongValue) {
+                audio.pause()
+            }
+        })
+    </script>
+</body>
+</html>

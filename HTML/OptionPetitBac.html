@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compte à Rebours</title>
+</head>
+<body>
+<h2>Choisissez le temps de jeu part manche :</h2>
+<div>
+  <div>
+    <button id="decreaseSong">-</button>
+    <form id="SongForm" method="POST" action="/GamePetitBac">
+    <input type="text" id="Song" name="Song" value="30" readonly>
+    </form>
+    <button id="increaseSong">+</button>
+  </div>
+<h2>Choisissez le nombre de manche :</h2>
+<div>
+  <button id="decreaseHandle">-</button>
+  <form id="HandleForm" method="POST" action="/GamePetitBac">
+  <input type="text" id="HandleId" name="HandleName" value="5" readonly>
+  </form>
+  <button id="increaseHandle">+</button>
+</div>
+
+<!-- <h2>Choisissez le nombre de joueur : </h2> -->
+<div style="display: none;">
+  <!-- <button id="decreasePlayer">-</button> -->
+  <form id="PlayerForm" method="POST" action="/ConfigureRoom">
+  <input type="number" name="max_players" id="max_players" value="2">
+  <input type="hidden" name="game_id" value="3">
+
+  </form>
+  <!-- <button id="increasePlayer">+</button> -->
+</div>
+
+<form id="gameForm" method="POST" action="/GamePetitBac">
+    <button id="start" type="submit">Valide</button>
+</form>
+<script>
+const SongForm = document.getElementById('SongForm');
+const HandleForm = document.getElementById('HandleForm');
+const PlayerForm = document.getElementById('PlayerForm');
+
+
+const timerSongInput = document.getElementById('Song')
+const decreaseSongButton = document.getElementById('decreaseSong')
+const increaseSongButton = document.getElementById('increaseSong')
+
+const HandleInput = document.getElementById('HandleId')
+const decreaseHandleButton = document.getElementById('decreaseHandle')
+const increaseHandleButton = document.getElementById('increaseHandle')
+
+const PlayerInput = document.getElementById('max_players');
+    const increasePlayerButton = document.getElementById('increasePlayer');
+    const decreasePlayerButton = document.getElementById('decreasePlayer');
+
+    function submitForm(form) {
+        form.submit();
+    }
+    
+    start.addEventListener('click', (event) => {
+        event.preventDefault(); // Empêcher le comportement par défaut du formulaire
+
+    console.log(timerSongInput.value)
+    document.cookie = `countdownSong=${timerSongInput.value}`
+    // document.cookie = `countdownAnswer=${timerAnswerInput.value}`
+
+        // Récupérer les valeurs des formulaires
+        const songValue = timerSongInput.value;
+        const handleValue = HandleInput.value;
+        const playerValue = PlayerInput.value;
+
+
+        SongForm.querySelector('input').value = songValue;
+        HandleForm.querySelector('input').value = handleValue;
+        PlayerForm.querySelector('input').value = playerValue;
+
+
+        submitForm(SongForm);
+        submitForm(HandleForm);
+        submitForm(PlayerForm);
+
+    });
+
+increaseSongButton.addEventListener('click', () => {
+  let time = parseInt(timerSongInput.value)
+  if (time < 300) {
+    time += 30
+    timerSongInput.value = time
+  }
+})
+
+decreaseSongButton.addEventListener('click', () => {
+  let time = parseInt(timerSongInput.value)
+  if (time > 60) {
+    time -= 30
+    timerSongInput.value = time
+  }
+})
+increaseHandleButton.addEventListener('click', () => {
+  let time = parseInt(HandleInput.value)
+  if (time < 15) {
+    time += 5
+    HandleInput.value = time
+  }
+})
+decreaseHandleButton.addEventListener('click', () => {
+  let time = parseInt(HandleInput.value)
+  if (time > 5) {
+    time -= 5
+    HandleInput.value = time
+  }
+})
+
+
+
+// document.getElementById('start').addEventListener('click', () => {
+//     console.log(timerSongInput.value)
+//     document.cookie = `countdownSong=${timerSongInput.value}`
+//     document.cookie = `countdownAnswer=${timerAnswerInput.value}`
+
+// })
+
+decreasePlayerButton.addEventListener('click', () => {
+      let time = parseInt(PlayerInput.value)
+      if (time > 2) {
+        time -= 1
+        PlayerInput.value = time
+      }
+    })
+    
+    increasePlayerButton.addEventListener('click', () => {
+      let time = parseInt(PlayerInput.value)
+      if (time < 10) {
+        time += 1
+        PlayerInput.value = time
+      }
+    })
+
+</script>
+</body>
+</html>

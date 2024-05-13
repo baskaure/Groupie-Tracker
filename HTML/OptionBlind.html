@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Compte à Rebours</title>
+</head>
+<body>
+
+<h2>Choisissez le temps d'ecoute :</h2>
+<div>
+  <button id="decreaseSong">-</button>
+  <form id="SongForm" method="POST" action="/BlindTest">
+    <input type="text" name="Song" id="Song" value="10" readonly>
+    </form>
+  <button id="increaseSong">+</button>
+</div>
+
+<h2>Choisissez le temps de reponce (ce declanche a la fin de la musique) :</h2>
+<div>
+  <button id="decreaseAnswer">-</button>
+  <form id="AnswerForm" method="POST" action="/BlindTest">
+    <input type="text" name="Answer" id="Answer" value="10" readonly>
+    </form>
+  <button id="increaseAnswer">+</button>
+</div>
+
+<h2>Choisissez le nombre de manche :</h2>
+<div>
+  <button id="decreaseHandle">-</button>
+  <form id="HandleForm" method="POST" action="/ConfigureRoom">
+  <input type="number" name="Handle" id="Handle" value="5" readonly>
+  </form>
+  <button id="increaseHandle">+</button>
+</div>
+<div style="display: none;">
+  <!-- <button id="decreasePlayer">-</button> -->
+  <form id="PlayerForm" method="POST" action="/ConfigureRoom">
+  <input type="number" name="max_players" id="max_players" value="2">
+  <input type="hidden" name="game_id" value="2">
+
+  </form>
+  <!-- <button id="increasePlayer">+</button> -->
+</div>
+
+<form id="gameForm" method="POST" action="/BlindTest">
+    <button id="start">Valide</button>
+</form>
+
+
+{{template "Option"}}
+
+
+</body>
+</html>
